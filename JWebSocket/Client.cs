@@ -66,9 +66,9 @@ namespace JLibrary.JWebSocket
             byte[] receiveBuffer = new byte[receiveChunkSize];
             try
             {
-                using (var ms = new MemoryStream())
+                 while (ws.State == WebSocketState.Open)
                 {
-                    while (ws.State == WebSocketState.Open)
+                    using (var ms = new MemoryStream())
                     {
                         int currentLength = 0;
                         do
